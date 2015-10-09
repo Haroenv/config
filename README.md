@@ -5,6 +5,7 @@
 * `.bash_profile`
 * `base16.terminal`
 * `Preferences.sublime-settings`
+* `.osx` (modified from  mathias)
 * more if I find it necessary
 
 # see also
@@ -13,4 +14,4 @@
 
 # license
 
-CC0
+
