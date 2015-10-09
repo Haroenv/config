@@ -1,0 +1,38 @@
+{
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html"
+		},
+		{
+			"characters": "/",
+			"selector": "string.quoted.double.html,string.quoted.single.html, source.css"
+		}
+	],
+	"color_scheme": "Packages/User/SublimeLinter/base16-eighties.dark (SL).tmTheme",
+	"font_face": "Monaco",
+	"font_size": 12,
+	"ignored_packages":
+	[
+		"Arduino-like IDE",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"new_window_settings":
+	{
+		"show_minimap": false
+	},
+	"open_files_in_new_window": false,
+	"scroll_past_end": true,
+	"tab_size": 4,
+	"theme": "Spacegray Eighties.sublime-theme",
+	"translate_tabs_to_spaces": false,
+	"trim_trailing_white_space_on_save": true,
+	"use_tab_stops": true,
+	"word_wrap": true
+}
