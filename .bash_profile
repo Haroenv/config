@@ -8,9 +8,9 @@ function parse_git_branch {
 # Show if there are things to commit
 parse_git_dirty () {
 	# * if uncommited changes
-	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" && $(git status 2> /dev/null | tail -n1) ]] && echo "*"
+	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" && $(git status 2> /dev/null | tail -n1) ]] && echo -n "*"
 	# # if unpushed commits
-	[[ $(git log --branches --not --remotes 2> /dev/null) ]] && echo "#"
+	[[ $(git log --branches --not --remotes 2> /dev/null) ]] && echo -n "#"
 }
 
 
@@ -83,6 +83,7 @@ alias gpl='git pull'
 alias gall='git add *'
 alias gis='git status'
 alias ga='git add'
+alias gco='git checkout'
 
 # Open with sublime text #
 ##########################
@@ -146,11 +147,16 @@ alias cd2='cd ../..'
 alias cd3='cd ../../..'
 alias cd4='cd ../../../..'
 alias cdh='cd ~'
+alias cdg='cd ~/git/'
 alias cdr='cd /'
 
 # mysql #
 #########
-export PATH="/usr/local/mysql/bin:$PATH"
+# export PATH="/usr/local/mysql/bin:$PATH"
+
+# composer #
+############
+export PATH=~/.composer/vendor/bin:$PATH
 
 # wifi on or off #
 # wifi on turns wifi on, wifi off turns it off" #
@@ -218,7 +224,7 @@ export PATH="/usr/local/sbin:$PATH"
 
 # grc, general colouring #
 ##########################
-source "`brew --prefix grc`/etc/grc.bashrc"
+# source "`brew --prefix grc`/etc/grc.bashrc"
 
 # alias setting up a python server at localhost:8000 #
 ######################################################
@@ -242,3 +248,4 @@ pd() {
   local projDir=$(pro search $1)
   cd ${projDir}
 }
+
