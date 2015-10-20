@@ -77,34 +77,35 @@ PATH=/usr/local/bin:${PATH/:\/usr\/local\/bin}
 
 # git aliases #
 ###############
+alias g='git'
 alias gca='git commit -am'
 alias gps='git push'
 alias gpl='git pull'
-alias gall='git add *'
+alias gall='git add .'
 alias gis='git status'
 alias ga='git add'
 alias gco='git checkout'
 
 # Open with sublime text #
 ##########################
-#alias subl='/Applications/Sublime\ Text\ 3.app/Contents/SharedSupport/bin/subl'
-function subl {
-	if [[ "$1" ]]; then
-		for i in "$@"; do
-			if [[ -e "$i" ]]; then
-				echo "opening $i"
-				open -a Sublime\ Text.app "$i"
-			else
-				echo "making "$i" and opening it"
-				touch "$1"
-				open -a Sublime\ Text.app "$i"
-			fi
-		done
-	else
-		echo "empty"
-		open -a Sublime\ Text.app
-	fi
-}
+alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+# function subl {
+# 	if [[ "$1" ]]; then
+# 		for i in "$@"; do
+# 			if [[ -e "$i" ]]; then
+# 				echo "opening $i"
+# 				open -a Sublime\ Text.app "$i"
+# 			else
+# 				echo "making "$i" and opening it"
+# 				touch "$1"
+# 				open -a Sublime\ Text.app "$i"
+# 			fi
+# 		done
+# 	else
+# 		echo "empty"
+# 		open -a Sublime\ Text.app
+# 	fi
+# }
 
 # Open with Xcode #
 ###################
@@ -125,11 +126,6 @@ function xcode {
 		open -a Xcode.app
 	fi
 }
-
-
-# open activity monitor #
-#########################
-alias actmon='open /Applications/Utilities/Activity\ Monitor.app/'
 
 # check what's keeping your mac awake #
 #######################################
@@ -158,9 +154,9 @@ alias cdr='cd /'
 ############
 export PATH=~/.composer/vendor/bin:$PATH
 
-# wifi on or off #
+# wifi on or off                                #
 # wifi on turns wifi on, wifi off turns it off" #
-##################
+#################################################
 alias wifi='networksetup -setairportpower airport'
 alias wifirotate='wifi off;wifi on'
 
@@ -197,20 +193,36 @@ function center {
 	echo "$str";
 }
 
-# auto-completion #
-###################
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
+# Add tab completion for many Bash commands #
+# brew install bash-completion              #
+#############################################
+if which brew > /dev/null && [ -f "$(brew --prefix)/share/bash-completion/bash_completion" ]; then
+    source "$(brew --prefix)/share/bash-completion/bash_completion";
+elif [ -f /etc/bash_completion ]; then
+    source /etc/bash_completion;
+fi;
+
+# Enable tab completion for `g` by marking it as an alias for `git` #
+#####################################################################
+if type _git &> /dev/null && [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
+    complete -o default -o nospace -F _git g;
+fi;
+
+# Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards #
+###################################################################################
+[ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
+
+# Add tab completion for `defaults read|write NSGlobalDomain` #
+# You could just use `-g` instead, but I like being explicit  #
+###############################################################
+complete -W "NSGlobalDomain" defaults;
+
 
 # various application openings #
 ################################
 alias pixl='open -a /Applications/Pixelmator.app'
 alias chrome='open -a /Applications/Google\ Chrome\ Canary.app'
-
-# easier *chan archiver #
-#########################
-alias thread='thread-archiver --path=/Users/haroenviaene/Desktop/brol/ --nothumbs --ssl --verbose'
+alias actmon='open /Applications/Utilities/Activity\ Monitor.app/'
 
 # join multiple pdf's                     #
 # merged.pdf from.pdf and.pdf *.pdfexport #
@@ -223,8 +235,9 @@ alias mergepdf='"/System/Library/Automator/Combine PDF Pages.action/Contents/Res
 export PATH="/usr/local/sbin:$PATH"
 
 # grc, general colouring #
+# brew install grc       #
 ##########################
-# source "`brew --prefix grc`/etc/grc.bashrc"
+source "`brew --prefix grc`/etc/grc.bashrc"
 
 # alias setting up a python server at localhost:8000 #
 ######################################################
@@ -242,8 +255,9 @@ function googlesay {
 #######################
 alias print='enscript -C -B -f Monaco10 -T 4'
 
-# pro cd function #
-###################
+# pro cd function  #
+# gem install pro  #
+####################
 pd() {
   local projDir=$(pro search $1)
   cd ${projDir}
