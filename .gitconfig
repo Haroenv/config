@@ -1,0 +1,43 @@
+[user]
+  name = Haroen Viaene
+  email = hello@haroen.me
+[push]
+  default = simple
+[credential]
+  helper = osxkeychain
+[url "https://github.com/"]
+  insteadOf = gh:
+[url "https://gist.github.com/"]
+  insteadOf = gist:
+[alias]
+  co = checkout
+
+  # Add and remove all changes, note how this alias is calling another alias
+  addremove = !git r && git add . --all
+
+  # Show all of my configured aliases
+  aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
+
+  # For when you made that commit a bit too early, amend
+  amend = !git log -n 1 --pretty=tformat:%s%n%n%b | git commit -F - --amend
+
+  # Show all branches
+  br = branch -av
+
+  # Delete a branch
+  brdel = branch -D
+
+  # Which files are receiving the most "love"
+  churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
+
+  # View the log and diff for a commit (previous if no SHA1 provided)
+  details = log -n1 -p --format=fuller
+
+  # Unstage changes from the index
+  unstage = reset HEAD --
+
+  # View a pretty git log with branch tree
+  g = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+
+  # Update all submodules
+  subup = submodule update --init
