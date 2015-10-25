@@ -10,12 +10,13 @@
 			"selector": "string.quoted.double.html,string.quoted.single.html, source.css"
 		}
 	],
-	"color_scheme": "Packages/User/SublimeLinter/base16-eighties.dark (SL).tmTheme",
+	"color_scheme": "Packages/Base16 Color Schemes/base16-eighties.dark.tmTheme",
 	"font_face": "Monaco",
-	"font_size": 12,
+	"font_size": 13,
 	"ignored_packages":
 	[
-		"Arduino-like IDE",
+		"GitHub Flavored Markdown Preview",
+		"jQuery",
 		"Vintage"
 	],
 	"indent_guide_options":
@@ -29,9 +30,9 @@
 	},
 	"open_files_in_new_window": false,
 	"scroll_past_end": true,
-	"tab_size": 4,
+	"tab_size": 2,
 	"theme": "Spacegray Eighties.sublime-theme",
-	"translate_tabs_to_spaces": false,
+	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"use_tab_stops": true,
 	"word_wrap": true
