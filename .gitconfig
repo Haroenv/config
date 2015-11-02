@@ -9,6 +9,8 @@
   insteadOf = gh:
 [url "https://gist.github.com/"]
   insteadOf = gist:
+[url "https://git.ikdoeict.be/"]
+  insteadOf = ict:
 [alias]
   co = checkout
 
