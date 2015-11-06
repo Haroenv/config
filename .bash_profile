@@ -263,3 +263,6 @@ pd() {
   cd ${projDir}
 }
 
+# jekyll serve on port 80 #
+###########################
+alias jes='sudo jekyll s --port 80'
