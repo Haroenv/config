@@ -266,3 +266,8 @@ pd() {
 # jekyll serve on port 80 #
 ###########################
 alias jes='sudo jekyll s --port 80'
+
+# purgefile cloudflare #
+# cfcli                #
+########################
+alias prg='cfcli purgefile'
