@@ -12,4 +12,7 @@ echo "# malware and ads
 127.0.0.1 urgent-computer-alert.com
 127.0.0.1 testpc24.theupgradeweb.com
 127.0.0.1 paid.outbrain.com
-127.0.0.1 static.6min.today" >> /etc/hosts
+127.0.0.1 static.6min.today
+127.0.0.1 onclickads.net" >> /etc/hosts
+
+sudo killall -HUP mDNSResponder
