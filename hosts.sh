@@ -1,18 +1,24 @@
 # add disallowed hosts to /etc/hosts
 # run with super user permissions
 
-echo "# malware and ads
-127.0.0.1 mycustomersupport365.com
-127.0.0.1 mackeeper.com
-127.0.0.1 mackeeperapp.mackeeper.com
-127.0.0.1 mackeeperapp2.mackeeper.com
-127.0.0.1 mackeeperapp3.mackeeper.com
-127.0.0.1 macsecurityalert.net
-127.0.0.1 systemupdatenow.com
-127.0.0.1 urgent-computer-alert.com
-127.0.0.1 testpc24.theupgradeweb.com
-127.0.0.1 paid.outbrain.com
-127.0.0.1 static.6min.today
-127.0.0.1 onclickads.net" >> /etc/hosts
+hosts=(
+  "# malware and ads"
+  "mycustomersupport365.com"
+  "mackeeper.com"
+  "mackeeperapp.mackeeper.com"
+  "mackeeperapp2.mackeeper.com"
+  "mackeeperapp3.mackeeper.com"
+  "macsecurityalert.net"
+  "systemupdatenow.com"
+  "urgent-computer-alert.com"
+  "testpc24.theupgradeweb.com"
+  "paid.outbrain.com"
+  "static.6min.today"
+  "onclickads.net"
+)
+
+for host in "${hosts[@]}";do
+    grep -q "127.0.0.1 $host" /etc/hosts || echo "127.0.0.1 $host" >> /etc/hosts
+done
 
 sudo killall -HUP mDNSResponder
