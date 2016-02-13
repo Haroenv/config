@@ -2,7 +2,6 @@
 # run with super user permissions
 
 hosts=(
-  "# malware and ads"
   "mycustomersupport365.com"
   "mackeeper.com"
   "mackeeperapp.mackeeper.com"
