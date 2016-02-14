@@ -14,6 +14,7 @@ hosts=(
   "paid.outbrain.com"
   "static.6min.today"
   "onclickads.net"
+  "http://secure4pads.com"
 )
 
 for host in "${hosts[@]}";do
