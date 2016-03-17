@@ -7,10 +7,10 @@ function parse_git_branch {
 
 # Show if there are things to commit
 parse_git_dirty () {
-	# * if uncommited changes
-	[[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" && $(git status 2> /dev/null | tail -n1) ]] && echo -n "*"
-	# # if unpushed commits
-	[[ $(git log --branches --not --remotes 2> /dev/null) ]] && echo -n "#"
+    # * if uncommited changes
+    [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" && $(git status 2> /dev/null | tail -n1) ]] && echo -n "*"
+    # # if unpushed commits
+    [[ $(git log --branches --not --remotes 2> /dev/null) ]] && echo -n "#"
 }
 
 
@@ -88,43 +88,43 @@ alias gco='git checkout'
 
 # Open with sublime text #
 ##########################
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
+# alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
 # function subl {
-# 	if [[ "$1" ]]; then
-# 		for i in "$@"; do
-# 			if [[ -e "$i" ]]; then
-# 				echo "opening $i"
-# 				open -a Sublime\ Text.app "$i"
-# 			else
-# 				echo "making "$i" and opening it"
-# 				touch "$1"
-# 				open -a Sublime\ Text.app "$i"
-# 			fi
-# 		done
-# 	else
-# 		echo "empty"
-# 		open -a Sublime\ Text.app
-# 	fi
+#   if [[ "$1" ]]; then
+#       for i in "$@"; do
+#           if [[ -e "$i" ]]; then
+#               echo "opening $i"
+#               open -a Sublime\ Text.app "$i"
+#           else
+#               echo "making "$i" and opening it"
+#               touch "$1"
+#               open -a Sublime\ Text.app "$i"
+#           fi
+#       done
+#   else
+#       echo "empty"
+#       open -a Sublime\ Text.app
+#   fi
 # }
 
 # Open with Xcode #
 ###################
 function xcode {
-	if [[ "$1" ]]; then
-		for i in "$@"; do
-			if [[ -e "$i" ]]; then
-				echo "opening $i"
-				open -a Xcode.app "$i"
-			else
-				echo "making "$i" and opening it"
-				touch "$1"
-				open -a Xcode.app "$i"
-			fi
-		done
-	else
-		echo "empty"
-		open -a Xcode.app
-	fi
+    if [[ "$1" ]]; then
+        for i in "$@"; do
+            if [[ -e "$i" ]]; then
+                echo "opening $i"
+                open -a Xcode.app "$i"
+            else
+                echo "making "$i" and opening it"
+                touch "$1"
+                open -a Xcode.app "$i"
+            fi
+        done
+    else
+        echo "empty"
+        open -a Xcode.app
+    fi
 }
 
 # check what's keeping your mac awake #
@@ -134,8 +134,8 @@ alias awake='pmset -g assertions'
 # ls after a cd #
 #################
 function cdls {
-	cd "$1"
-	ls
+    cd "$1"
+    ls
 }
 alias cd='cdls'
 alias cd1='cd ..'
@@ -164,33 +164,17 @@ alias wifirotate='wifi off;wifi on'
 ##########################################
 bind Space:magic-space;
 
-# Move the given file(s) to the Trash. #
-########################################
-function trash {
-	for path in "$@"; do
-		# Make relative paths "absolutey".
-		[ "${path:0:1}" = '/' ] || path="$PWD/$1";
-
-		# Execute the AppleScript to nudge Finder.
-		echo "$(cat <<-EOD
-			tell application "Finder"
-				delete POSIX file "${path//\"/\"}"
-			end
-		EOD)" | osascript;
-	done;
-}
-
 # Print the given text in the center of the screen. #
 #####################################################
 function center {
-	width=$(tput cols);
-	str="$@";
-	len=${#str};
-	[ $len -ge $width ] && echo "$str" && return;
-	for ((i = 0; i < $(((($width - $len)) / 2)); i++)); do
-		echo -n " ";
-	done;
-	echo "$str";
+    width=$(tput cols);
+    str="$@";
+    len=${#str};
+    [ $len -ge $width ] && echo "$str" && return;
+    for ((i = 0; i < $(((($width - $len)) / 2)); i++)); do
+        echo -n " ";
+    done;
+    echo "$str";
 }
 
 # Add tab completion for many Bash commands #
@@ -247,7 +231,7 @@ alias server='python -m SimpleHTTPServer'
 # use as googlesay "en" "what you want to say" #
 ################################################
 function googlesay {
-	curl -A RG translate\.google\.com/translate_tts -d "tl=$1&q=$*" |mpg123 -;
+    curl -A RG translate\.google\.com/translate_tts -d "tl=$1&q=$*" |mpg123 -;
 }
 
 # printing            #
@@ -263,11 +247,39 @@ pd() {
   cd ${projDir}
 }
 
+# roster.js in a shitty way #
+#############################
+alias roster='node ~/git/roster-js/roster.js'
+
 # jekyll serve on port 80 #
 ###########################
 alias jes='sudo jekyll s --port 80'
+
+# mamp php #
+############
+export PATH=/Applications/MAMP/bin/php/phpversion/bin/:$PATH
 
 # purgefile cloudflare #
 # cfcli                #
 ########################
 alias prg='cfcli purgefile'
+
+# fuck                 #
+# brew install thefuck #
+########################
+eval $(thefuck --alias)
+
+# simple jekyll template alias     #
+# github.com/Haroenv/simple-jekyll #
+####################################
+alias template='curl -s https://raw.githubusercontent.com/Haroenv/simple-jekyll/master/install.sh | bash /dev/stdin'
+
+# weather                       #
+# http://wttr.in/Bruges,Belgium #
+#################################
+alias weather='curl -s http://wttr.in/Bruges,Belgium'
+
+# torch    #
+# torch.ch #
+############
+. /Users/haroenv/torch/install/bin/torch-activate
