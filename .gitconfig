@@ -3,16 +3,21 @@
   email = hello@haroen.me
 [push]
   default = simple
+  followTags = true
 [credential]
   helper = osxkeychain
 [url "https://github.com/"]
   insteadOf = gh:
 [url "https://gist.github.com/"]
   insteadOf = gist:
-[url "https://git.ikdoeict.be/"]
-  insteadOf = ict:
 [alias]
   co = checkout
+  cl = clone
+  cm = commit
+  a = add
+
+  # Add some file to your gitignore
+  ignore = !sh -c 'echo $1 >> .gitignore' -
 
   # Add and remove all changes, note how this alias is calling another alias
   addremove = !git r && git add . --all
@@ -43,3 +48,12 @@
 
   # Update all submodules
   subup = submodule update --init
+[core]
+  excludesfile = ~/.gitignore
+  editor = subl -n -w
+[http]
+  postBuffer = 1572864000
+[filter "lfs"]
+  clean = git-lfs clean %f
+  smudge = git-lfs smudge %f
+  required = true
