@@ -8,7 +8,8 @@
 		"bullgit",
 		"Bruges",
 		"w",
-		"Pieter"
+		"Pieter",
+		"internship"
 	],
 	"auto_complete_triggers":
 	[
@@ -24,8 +25,20 @@
 	"color_scheme": "Packages/Theme - Spacegray/base16-eighties.dark.tmTheme",
 	"dictionary": "Packages/Language - English/en_GB.dic",
 	"ensure_newline_at_eof_on_save": true,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"node_modules",
+		"dist",
+		"tmp",
+		"vendor",
+		"_site"
+	],
 	"font_face": "Menlo",
-	"font_size": 14,
+	"font_size": 15,
 	"ignored_packages":
 	[
 		"EditorConfig",
@@ -33,6 +46,7 @@
 		"jQuery",
 		"JSHint Gutter",
 		"JSLint",
+		"Twig",
 		"Vintage"
 	],
 	"ignored_words":
@@ -58,6 +72,5 @@
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"use_tab_stops": true,
-	"word_wrap": true,
-	"folder_exclude_patterns": [".svn", ".git", ".hg", "CVS", "node_modules"]
+	"word_wrap": true
 }
