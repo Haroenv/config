@@ -9,6 +9,14 @@ function fish_prompt
       echo (git status -s --ignore-submodules=dirty ^/dev/null)
     end
 
+    function _is_git_ahead
+      echo (git status --ignore-submodules=dirty ^/dev/null | grep ahead)
+    end
+
+    function _is_git_behind
+      echo (git status --ignore-submodules=dirty ^/dev/null | grep behind)
+    end
+
     function _is_git_repo
       git status -s >/dev/null ^/dev/null
     end
@@ -33,11 +41,19 @@ function fish_prompt
       eval "_is_$argv[1]_dirty"
     end
 
+    function _is_repo_ahead
+      eval "_is_$argv[1]_ahead"
+    end
+
+    function _is_repo_behind
+      eval "_is_$argv[1]_behind"
+    end
+
     function _repo_type
-      if _is_hg_repo
-        echo 'hg'
-      else if _is_git_repo
+      if _is_git_repo
         echo 'git'
+      else if _is_hg_repo
+        echo 'hg'
       end
     end
   end
@@ -60,6 +76,16 @@ function fish_prompt
     if [ (_is_repo_dirty $repo_type) ]
       set -l dirty "$yellow ✗"
       set repo_info "$repo_info$dirty"
+    end
+
+    if [ (_is_repo_ahead $repo_type) ]
+      set -l ahead "$blue ⤒"
+      set repo_info "$repo_info$ahead"
+    end
+
+    if [ (_is_repo_behind $repo_type) ]
+      set -l behind "$blue ⤓"
+      set repo_info "$repo_info$behind"
     end
   end
 
