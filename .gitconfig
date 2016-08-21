@@ -35,7 +35,7 @@
   brdel = branch -D
 
   # Delete branches not on remote (!alert!)
-  purge = !git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
+  # purge = !git branch --merged | grep -v "\*" | xargs -n 1 git branch -d
 
   # Which files are receiving the most "love"
   churn = !git log --all -M -C --name-only --format='format:' "$@" | sort | grep -v '^$' | uniq -c | sort | awk 'BEGIN {print "count,file"} {print $1 "," $2}'
@@ -51,6 +51,8 @@
 
   # Update all submodules
   subup = submodule update --init
+[branch]
+  autosetuprebase = always
 [core]
   excludesfile = ~/.gitignore
   editor = subl -n -w
