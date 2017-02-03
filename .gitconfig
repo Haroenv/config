@@ -46,6 +46,9 @@
   # Unstage changes from the index
   unstage = reset HEAD --
 
+  # stash by default ignores unstashed
+  stash = stash --all
+
   # View a pretty git log with branch tree
   g = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 
@@ -62,3 +65,11 @@
   clean = git-lfs clean %f
   smudge = git-lfs smudge %f
   required = true
+[color "diff"]
+  whitespace = red reverse
+[diff]
+  wsErrorHighlight = all
+[colors]
+  ui = true
+[init]
+  templatedir = /Users/haroenv/.git-templates
