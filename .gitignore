@@ -1,0 +1,11 @@
+# node
+node_modules
+
+# jekyll
+_site
+
+# vscode
+.vscode
+
+# macos
+.DS_Store
