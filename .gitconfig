@@ -72,4 +72,4 @@
 [colors]
   ui = true
 [init]
-  templatedir = /Users/haroenv/.git-templates
+  templatedir = ~/.git-templates
