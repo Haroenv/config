@@ -1,0 +1,18 @@
+echo "// Place your settings in this file to overwrite the default settings
+{
+    "files.exclude": {
+        "node_modules": true,
+        "build": true,
+        "_site": true,
+        ".sass-cache": true
+    },
+    "editor.wordWrap": true,
+    "editor.fontSize": 14,
+    "terminal.integrated.fontSize": 14,
+    "git.confirmSync": false,
+    "editor.renderWhitespace": "all",
+    "editor.tabSize": 2,
+    "typescript.check.tscVersion": false,
+    "files.insertFinalNewline": true
+}
+
