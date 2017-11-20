@@ -13,3 +13,5 @@
 [haroenv/sublime-snippets](https://github.com/haroenv/sublime-snippets)
 
 # license
+
+Whatever you want, CC0

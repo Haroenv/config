@@ -88,7 +88,6 @@
     "typings"
   ],
   "cSpell.ignoreRegExpList": ["\\\\\\w*(\\[.*?\\])?(\\{.*?\\})?", "\\$.+?\\$"],
-  "workbench.colorTheme": "Github",
   "emmet.excludeLanguages": [],
   "[cpp]": {
     "editor.quickSuggestions": false
@@ -130,5 +129,11 @@
   "typescript.check.npmIsInstalled": false,
   "git.path": "/usr/local/bin/git",
   "workbench.startupEditor": "newUntitledFile",
-  "prettier.eslintIntegration": true
+  "prettier.eslintIntegration": true,
+  "explorer.confirmDelete": false,
+  "workbench.colorTheme": "GitHub Clean White",
+  "explorer.confirmDragAndDrop": false,
+  "markdown.styles": [
+    "https://raw.githubusercontent.com/Haroenv/config/master/markdown-style.css"
+  ]
 }
